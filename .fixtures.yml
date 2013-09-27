@@ -1,0 +1,4 @@
+fixtures:
+  symlinks:
+    s3cmd: "#{source_dir}"
+

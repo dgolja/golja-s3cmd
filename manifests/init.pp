@@ -1,41 +1,42 @@
 # == Class: s3cmd
 #
-# Full description of class s3cmd here.
+# Manage and configure s3cmd from http://s3tools.org/
 #
 # === Parameters
 #
-# Document parameters here.
-#
-# [*sample_parameter*]
-#   Explanation of what this parameter affects and what it defaults to.
-#   e.g. "Specify one or more upstream ntp servers as an array."
-#
-# === Variables
-#
-# Here you should define a list of variables that this module would require.
-#
-# [*sample_variable*]
-#   Explanation of how this variable affects the funtion of this class and if it
-#   has a default. e.g. "The parameter enc_ntp_servers must be set by the
-#   External Node Classifier as a comma separated list of hostnames." (Note,
-#   global variables should not be used in preference to class parameters  as of
-#   Puppet 2.6.)
+# [*$ensure*]
+#   Remove or install the s3tools package. Possible values
+#   present or absent
 #
 # === Examples
 #
-#  class { s3cmd:
-#    servers => [ 'pool.ntp.org', 'ntp.local.company.com' ]
-#  }
+#  include s3cmd
 #
-# === Authors
+# === Author
 #
-# Author Name <author@domain.com>
+# Dejan Golja <dejan@golja.org>
 #
-# === Copyright
-#
-# Copyright 2011 Your name here, unless otherwise noted.
-#
-class s3cmd {
 
+class s3cmd(
+  $ensure = 'present' 
+) inherits s3cmd::params {
 
+  if !($ensure in ['present', 'absent']) {
+    fail('ensure must be either present or absent')
+  }
+  
+  if $::osfamily == 'RedHat' or $::operatingsystem == 'Amazon' {
+    yumrepo { 's3tools':
+      descr    => $s3cmd::params::description,
+      baseurl  => $s3cmd::params::baseurl,
+      gpgkey   => $s3cmd::params::gpgkey,
+      gpgcheck => 1,
+      enabled  => 1,
+    } -> Package['s3cmd']
+  }
+  
+  package {'s3cmd':
+    ensure => $ensure,
+    name   => $s3cmd::params::package_name,
+  }
 }

@@ -1,0 +1,13 @@
+{
+  "name": "golja-s3cmd",
+  "version": "0.0.1",
+  "summary": "s3cmd module",
+  "author": "Dejan Golja",
+  "description": "Manage installation and configuration of s3cmd from s3tools.",
+  "dependencies": [],
+  "types": [],
+  "checksums": {},
+  "source": "git://github.com/n1tr0g/golja-s3cmd.git",
+  "project_page": "http://github.com/n1tr0g/golja-s3cmd.git",
+  "license": "ASL 2.0"
+}

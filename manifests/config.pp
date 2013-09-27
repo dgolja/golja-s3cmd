@@ -30,7 +30,8 @@
 #   Path to GPG program needed for encryption 
 #
 # [*home_dir*]
-#   overwrites the default home dir of the user in case you are not using /home or /root for root
+#   overwrites the default home dir of the user in case you are not 
+#   using /home or /root for root
 #
 # === Examples
 #
@@ -46,15 +47,15 @@
 #
 
 define s3cmd::config(
- $ensure = 'present',
- $user = $title, 
- $aws_access_key,
- $aws_secret_key,
- $bucket_location         = 'US',
- $use_https               = true,
- $encryption_passphrase   = undef,
- $path_to_gpg             = '/usr/bin/gpg',
- $home_dir                 = undef,
+  $ensure = 'present',
+  $user = $title, 
+  $aws_access_key,
+  $aws_secret_key,
+  $bucket_location         = 'US',
+  $use_https               = true,
+  $encryption_passphrase   = undef,
+  $path_to_gpg             = '/usr/bin/gpg',
+  $home_dir                 = undef,
 ) {
 
   if !($ensure in ['present', 'absent']) {
@@ -66,7 +67,7 @@ define s3cmd::config(
   }
   else {
     $home_path = $user ? {
-      'root'  => "/root",
+      'root'  => '/root',
       default => "/home/${user}"   
     }
   }
@@ -75,7 +76,7 @@ define s3cmd::config(
     ensure  => $ensure,
     content => template('s3cmd/s3cfg.erb'),
     owner   => $user,
-    mode    => 0600,
+    mode    => '0600',
   }
   
 }

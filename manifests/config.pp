@@ -4,6 +4,10 @@
 #
 # === Parameters
 #
+# [*$ensure*]
+#   Remove or install the s3cmd config file. Possible values
+#   present or absent
+#
 # [*$aws_access_key*]
 #   AWS key with S3 privileges to modify data in the S3
 #
@@ -24,7 +28,7 @@
 #   by unauthorized persons while in transfer to S3
 #
 # [*user*]
-#   system username for where to install the s3cmd config file
+#   system username which defines the .s3cfg file location.
 #
 # [*path_to_gpg*]
 #   Path to GPG program needed for encryption 

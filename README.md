@@ -39,6 +39,11 @@ Valid value present/absent
 
 **REQUIRED** - AWS secret key
 
+#####`ensure`
+
+Remove or install the s3cmd config file. Possible values present or absent
+`Default: present`
+
 #####`bucket_location` 
 
 AWS S3 supports the following buckets: 
@@ -67,7 +72,7 @@ using /home or /root for root. *Default: undef*
 
 #####`path_to_gpg`
 
-Path to GPG pif encryption is enabled. *Default: /usr/bin/gpg*
+Path to GPG if encryption is enabled. *Default: /usr/bin/gpg*
 
 ## Supported Platforms
 

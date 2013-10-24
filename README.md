@@ -4,6 +4,10 @@
 
 Install s3cmd on Ubuntu/Debian/RedHat/CentOS/Amazon AMI from OS repo or in RedHat/CentOS case from the [s3tools repository](http://s3tools.org/s3cmd).
 
+Tested with Travis
+
+[![Build Status](https://travis-ci.org/n1tr0g/golja-s3cmd.png)](https://travis-ci.org/n1tr0g/golja-s3cmd)
+
 ##Installation
 
      $ puppet module install golja/s3cmd

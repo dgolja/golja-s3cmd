@@ -12,14 +12,18 @@ Install s3cmd on Ubuntu/Debian/RedHat/CentOS/Amazon AMI from OS repo or in RedHa
 
 ###Install s3cmd package
 
-    include s3cmd
+```puppet
+include '::s3cmd'
+```
 
 ###Create .s3cfg configuration for user root
 
-    s3cmd::config {'root':
-      aws_access_key => 'AUIAJYSJQT5WQ5S7EISQ',
-      aws_secret_key  => 'Kd24SfkdcQfsS4294MSKAS432',
-    }
+```puppet
+s3cmd::config {'root':
+  aws_access_key => 'AUIAJYSJQT5WQ5S7EISQ',
+  aws_secret_key  => 'Kd24SfkdcQfsS4294MSKAS432',
+}
+```
 
 ###Parameters
 
@@ -85,4 +89,3 @@ Path to GPG if encryption is enabled. *Default: /usr/bin/gpg*
 ## License
 
 See LICENSE file
-

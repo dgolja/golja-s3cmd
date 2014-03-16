@@ -51,36 +51,35 @@
 #
 
 define s3cmd::config(
-  $ensure = 'present',
-  $user = $title, 
   $aws_access_key,
   $aws_secret_key,
-  $bucket_location         = 'US',
-  $use_https               = true,
-  $encryption_passphrase   = undef,
-  $path_to_gpg             = '/usr/bin/gpg',
-  $home_dir                 = undef,
+  $ensure                = 'present',
+  $user                  = $title,
+  $bucket_location       = 'US',
+  $use_https             = true,
+  $encryption_passphrase = undef,
+  $path_to_gpg           = '/usr/bin/gpg',
+  $home_dir              = undef
 ) {
 
   if !($ensure in ['present', 'absent']) {
     fail('ensure must be either present or absent')
   }
-    
+
   if $home_dir {
     $home_path = $home_dir
   }
   else {
     $home_path = $user ? {
       'root'  => '/root',
-      default => "/home/${user}"   
+      default => "/home/${user}"
     }
   }
-  
+
   file { "${home_path}/.s3cfg":
     ensure  => $ensure,
     content => template('s3cmd/s3cfg.erb'),
     owner   => $user,
     mode    => '0600',
   }
-  
 }

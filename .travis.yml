@@ -14,6 +14,7 @@ env:
     - PUPPET_GEM_VERSION="~> 3.0.0"
     - PUPPET_GEM_VERSION="~> 3.1.0"
     - PUPPET_GEM_VERSION="~> 3.3.0"
+    - PUPPET_GEM_VERSION="~> 3.4.0"
 matrix:
   allow_failures:
     - rvm: ruby-head
@@ -29,4 +30,3 @@ matrix:
 notifications:
   email:
     - dejan@golja.org
-

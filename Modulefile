@@ -1,5 +1,5 @@
 name    'golja-s3cmd'
-version '0.0.1'
+version '0.0.2'
 source 'git://github.com/n1tr0g/golja-s3cmd.git'
 author 'Dejan Golja'
 license 'ASL 2.0'

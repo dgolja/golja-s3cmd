@@ -50,5 +50,14 @@ describe 's3cmd::config', :type => :define do
     let(:params) { default.merge({ :encryption_passphrase => 'blabla' })}
     it { should contain_file('/home/foo/.s3cfg').with_content(/^\s*gpg_passphrase = blabla/) }
   end
-    
+
+  context 'with proxy_host => http://localhost' do
+    let(:params) { default.merge({ :proxy_host => 'localhost' })}
+    it { should contain_file('/home/foo/.s3cfg').with_content(/^\s*proxy_host = localhost/) }
+  end
+  context 'with proxy_port => 8080' do
+    let(:params) { default.merge({ :proxy_port => '8080' })}
+    it { should contain_file('/home/foo/.s3cfg').with_content(/^\s*proxy_port = 8080/) }
+  end
+
 end

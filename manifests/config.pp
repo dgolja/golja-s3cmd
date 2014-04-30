@@ -59,6 +59,8 @@ define s3cmd::config(
   $use_https             = true,
   $encryption_passphrase = undef,
   $path_to_gpg           = '/usr/bin/gpg',
+  $proxy_host            = undef,
+  $proxy_port            = 0,
   $home_dir              = undef
 ) {
 

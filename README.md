@@ -77,10 +77,17 @@ system username which defines the .s3cfg file location. *Default: $title*
 Overwrites the default home dir of the user in case you are not
 using /home or /root for root. *Default: undef*
 
-
 #####`path_to_gpg`
 
 Path to GPG if encryption is enabled. *Default: /usr/bin/gpg*
+
+#####`proxy_host`
+
+Proxy server. *Default: undef*
+
+#####`proxy_port`
+
+Proxy port. *Default: undef*
 
 ## Supported Platforms
 

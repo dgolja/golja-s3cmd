@@ -39,4 +39,7 @@ class s3cmd(
     ensure => $ensure,
     name   => $s3cmd::params::package_name,
   }
+
+  # auto-create configs from hiera
+  create_resources('s3cmd::config', hiera_hash('s3cmd::config', {}))
 }

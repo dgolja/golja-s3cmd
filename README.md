@@ -29,6 +29,28 @@ s3cmd::config {'root':
 }
 ```
 
+###Create multiple .s3cfg files with hiera
+
+```yaml
+--
+s3cmd::config:
+  root:
+    aws_access_key: 'AUIAJYSJQT5WQ5S7EISQ'
+    aws_secret_key: 'Kd24SfkdcQfsS4294MSKAS432'
+  root_other:
+    aws_access_key: 'AUIAJYSJQT5WQ5S7EISQ'
+    aws_secret_key: 'Kd24SfkdcQfsS4294MSKAS432'
+    user: 'root'
+    filename: '.s3cmd-other'
+```
+
+And simply include s3cmd module:
+
+```puppet
+include '::s3cmd'
+```
+
+
 ###Parameters
 
 ####s3cmd
@@ -52,12 +74,26 @@ Valid value present/absent
 Remove or install the s3cmd config file. Possible values present or absent
 `Default: present`
 
-#####`bucket_location` 
+#####`filename`
 
-AWS S3 supports the following buckets: 
-US, EU or eu-west-1, us-west-1 (Oregon),  us-west-1 (N California), 
-ap-southeast-1 (Singapore), ap-southeast-2 (Sydney), ap-northeast-1 (Tokyo) 
+The filename of the deployed config. *Default: .s3cfg*
+
+#####`bucket_location`
+
+AWS S3 supports the following buckets:
+US, EU or eu-west-1, us-west-1 (Oregon),  us-west-1 (N California),
+ap-southeast-1 (Singapore), ap-southeast-2 (Sydney), ap-northeast-1 (Tokyo)
 and sa-east-1 (Sao Paulo). *Default: US*
+
+#####`host_base`
+
+The base host to use. You'll want to change this if using a different
+bucket_location. *Default: s3.amazonaws.com*
+
+#####`host_bucket`
+
+The hostname that resolves to your bucket. You'll want to change this if
+using a different bucket_location. *Default: %(bucket)s.s3.amazonaws.com*
 
 #####`use_https`
 
@@ -67,6 +103,10 @@ If use HTTPS protocol for communication with Amazon S3. *Default: True*
 
 Encryption password is used to protect your files from reading
 by unauthorized persons while in transfer to S3. *Default: undef*
+
+#####`encrypt`
+
+Client side encryption. *Default: false*
 
 #####`user`
 

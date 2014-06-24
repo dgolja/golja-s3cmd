@@ -14,11 +14,22 @@
 # [*aws_secret_key*]
 #   AWS secret key
 #
+# [*filename*]
+#   The filename of the deployed config. Default: .s3cfg
+#
 # [*bucket_location*]
 #   default bucket location is US. As for now AWS/s3md supports the
-#   following buckets: US, EU or eu-west-1, us-west-1 (Oregon), 
-#   us-west-1 (Northern California), ap-southeast-1 (Singapore), 
+#   following buckets: US, EU or eu-west-1, us-west-1 (Oregon),
+#   us-west-1 (Northern California), ap-southeast-1 (Singapore),
 #    ap-southeast-2 (Sydney), ap-northeast-1 (Tokyo) and sa-east-1 (Sao Paulo)
+#
+# [*host_base*]
+#   The base host to use. You'll want to change this if using a different
+#   bucket_location. Default: s3.amazonaws.com
+#
+# [*host_bucket*]
+#   The hostname that resolves to your bucket. You'll want to change this if
+#   using a different bucket_location. Default: %(bucket)s.s3.amazonaws.com
 #
 # [*use_https*]
 #   If use HTTPS protocol for communication with Amazon S3
@@ -27,14 +38,17 @@
 #   Encryption password is used to protect your files from reading
 #   by unauthorized persons while in transfer to S3
 #
+# [*encrypt*]
+#   Client side encryption. Default: false
+#
 # [*user*]
 #   system username which defines the .s3cfg file location.
 #
 # [*path_to_gpg*]
-#   Path to GPG program needed for encryption 
+#   Path to GPG program needed for encryption
 #
 # [*home_dir*]
-#   overwrites the default home dir of the user in case you are not 
+#   overwrites the default home dir of the user in case you are not
 #   using /home or /root for root
 #
 # === Examples
@@ -54,9 +68,13 @@ define s3cmd::config(
   $aws_access_key,
   $aws_secret_key,
   $ensure                = 'present',
+  $filename              = '.s3cfg',
   $user                  = $title,
   $bucket_location       = 'US',
+  $host_base             = 's3.amazonaws.com',
+  $host_bucket           = '%(bucket)s.s3.amazonaws.com',
   $use_https             = true,
+  $encrypt               = false,
   $encryption_passphrase = undef,
   $path_to_gpg           = '/usr/bin/gpg',
   $proxy_host            = undef,
@@ -78,7 +96,7 @@ define s3cmd::config(
     }
   }
 
-  file { "${home_path}/.s3cfg":
+  file { "${home_path}/${filename}":
     ensure  => $ensure,
     content => template('s3cmd/s3cfg.erb'),
     owner   => $user,

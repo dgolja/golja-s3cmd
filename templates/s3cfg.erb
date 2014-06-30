@@ -20,7 +20,7 @@ gpg_encrypt = %(gpg_command)s -c --verbose --no-use-agent --batch --yes --passph
 <% else -%>
 gpg_passphrase =
 <% end -%>
-guess_mime_type = True
+guess_mime_type = False
 host_base = <%= @host_base %>
 host_bucket = <%= @host_bucket %>
 human_readable_sizes = False

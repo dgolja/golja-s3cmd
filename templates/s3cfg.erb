@@ -19,8 +19,8 @@ gpg_encrypt = %(gpg_command)s -c --verbose --no-use-agent --batch --yes --passph
 gpg_passphrase =
 <% end -%>
 guess_mime_type = True
-host_base = s3.amazonaws.com
-host_bucket = %(bucket)s.s3.amazonaws.com
+host_base = <%= @host_base %>
+host_bucket = %(bucket)s.<%= @host_base %>
 human_readable_sizes = False
 list_md5 = False
 log_target_prefix = 

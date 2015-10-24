@@ -2,10 +2,20 @@ source 'https://rubygems.org'
 
 group :development, :test do
   gem 'rake',                    :require => false
+  gem 'rspec-core','~>3.1.7',    :require => false
   gem 'rspec-puppet',            :require => false
   gem 'puppetlabs_spec_helper',  :require => false
   gem 'puppet-lint',             :require => false
+  gem 'simplecov',               :require => false
+  gem 'puppet_facts',            :require => false
+  gem 'json',                    :require => false
   gem 'metadata-json-lint',      :require => false
+end
+
+if facterversion = ENV['FACTER_GEM_VERSION']
+  gem 'facter', facterversion, :require => false
+else
+  gem 'facter', :require => false
 end
 
 if puppetversion = ENV['PUPPET_GEM_VERSION']

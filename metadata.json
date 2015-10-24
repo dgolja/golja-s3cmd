@@ -4,14 +4,16 @@
       "operatingsystem": "RedHat",
       "operatingsystemrelease": [
         "5",
-        "6"
+        "6",
+        "7"
       ]
     },
     {
       "operatingsystem": "CentOS",
       "operatingsystemrelease": [
         "5",
-        "6"
+        "6",
+        "7"
       ]
     },
     {
@@ -25,45 +27,24 @@
       "operatingsystem": "Ubuntu",
       "operatingsystemrelease": [
         "10.04",
-        "12.04"
+        "12.04",
+        "14.04"
       ]
     }
   ],
   "requirements": [
-    { "name": "puppet", "version_requirement": ">=2.7.0 <4.0.0" },
-    { "name": "pe", "version_requirement": ">=2.7.0 <4.0.0" }
+    { "name": "puppet", "version_requirement": ">=2.7.0 <5.0.0" },
+    { "name": "pe", "version_requirement": ">=2.7.0 <5.0.0" }
   ],
   "author": "Dejan Golja",
-  "checksums": {
-    "CHANGELOG": "fd6e2c423dfc0b3bd67fbbd953bd46e6",
-    "Gemfile": "ddd2e38d681fdf427dbb88825dc3a318",
-    "Gemfile.lock": "c70c67c2ee300271f74a3d9e0c6336c8",
-    "LICENSE": "068b61c857ebf3d856893c6ebee97c4e",
-    "Modulefile": "30aa144fb61ff3bfcd5e8244c1a18abb",
-    "README.md": "a7624c52fdc174e243d730cb2532358d",
-    "Rakefile": "f37e6131fe7de9a49b09d31596f5fbf1",
-    "manifests/config.pp": "4207c2cf2b6f002cbb92532ea7e82066",
-    "manifests/init.pp": "36fd00ae178c7a62472c31a0447e634b",
-    "manifests/params.pp": "3cf31913f7598e4374d003cc67c99003",
-    "spec/classes/s3cmd_init_spec.rb": "ea4ada07d4b52f577526585aebe1f325",
-    "spec/defines/s3cmd_config_spec.rb": "3153afac44aab703ef11d56ee2b41f3d",
-    "spec/spec.opts": "a600ded995d948e393fbe2320ba8e51c",
-    "spec/spec_helper.rb": "3ea886dd135e120afa31e0aab12e85b0",
-    "templates/s3cfg.erb": "900c6fb00266c19efdbabac53e5a4c4e",
-    "tests/config.pp": "fc00ee982e484c2e47f41c7c24e96832",
-    "tests/init.pp": "5adbd2f1e1ebe36cda79443557f0b1a3"
-  },
   "dependencies": [
-
   ],
   "description": "Manage installation and configuration of s3cmd from s3tools.\n",
-  "license": "ASL 2.0",
+  "license": "Apache-2.0",
   "name": "golja-s3cmd",
-  "project_page": "http://github.com/n1tr0g/golja-s3cmd.git",
-  "source": "git://github.com/n1tr0g/golja-s3cmd.git",
+  "project_page": "https://github.com/n1tr0g/golja-s3cmd",
+  "source": "https://github.com/n1tr0g/golja-s3cmd",
+  "issues_url": "https://github.com/n1tr0g/golja-s3cmd/issues",
   "summary": "s3cmd module",
-  "types": [
-
-  ],
-  "version": "0.1.0"
+  "version": "0.1.1"
 }

@@ -1,4 +1,3 @@
 .project
 spec/fixtures
 pkg/*
-metadata.json

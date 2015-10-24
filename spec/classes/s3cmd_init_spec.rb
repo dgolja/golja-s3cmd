@@ -9,14 +9,14 @@ describe 's3cmd', :type => :class do
   end
   
   context 'with setting ensure to absent' do
-    let(:params) { { :ensure  => 'absent',} }       
+    let(:params) { { :ensure  => 'absent',} }
     it { should contain_package('s3cmd').with('ensure' => 'absent')}
   end
     
   context 'with invalid ensure => installed' do
     let(:params) { { :ensure => 'installed'} }
     it 'should fail' do
-      expect { subject }.to raise_error(/ensure must be either present or absent/)
+      is_expected.to compile.and_raise_error(/ensure must be either present or absent/)
     end
   end
   
@@ -31,7 +31,7 @@ describe 's3cmd', :type => :class do
       ) }
       end
    end
-   
+
    context 'with $::operatingsystem Amazon' do
      let(:facts) { {:osfamily => 'Linux', :operatingsystem => 'Amazon'} }
      it { should contain_yumrepo('s3tools').with(
@@ -41,21 +41,21 @@ describe 's3cmd', :type => :class do
        'enabled'  => '1'
      ) }
    end
-   
+
   context 'with unsupported $::osfamily = foo' do
     let(:facts) { {:osfamily => 'foo'} }
 
     it 'should fail' do
-      expect { subject }.to raise_error(/Osfamily foo is not supported/)
+      is_expected.to compile.and_raise_error(/Osfamily foo is not supported/)
     end
-  end   
+  end
 
   context 'with unsupported operatingsystem in Linux os family' do
     let(:facts) { {:osfamily => 'Linux', :operatingsystem => 'foo'} }
 
     it 'should fail' do
-      expect { subject }.to raise_error(/Osfamily Linux with operating system foo is not supported/)
+      is_expected.to compile.and_raise_error(/Osfamily Linux with operating system foo is not supported/)
     end
   end 
-    
+
 end

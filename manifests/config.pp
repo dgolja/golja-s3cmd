@@ -53,6 +53,7 @@
 define s3cmd::config(
   $aws_access_key,
   $aws_secret_key,
+  $host_base             = 's3.amazonaws.com',
   $ensure                = 'present',
   $user                  = $title,
   $bucket_location       = 'US',
